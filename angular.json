@@ -62,7 +62,8 @@
               "buildTarget": "budget-net-worth:build:production"
             },
             "development": {
-              "buildTarget": "budget-net-worth:build:development"
+              "buildTarget": "budget-net-worth:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
