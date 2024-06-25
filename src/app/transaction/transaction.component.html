@@ -1,1 +1,18 @@
-<p>transaction works!</p>
+<h3>Transactions</h3>
+
+<table class="table" id="transactions-table">
+  <thead>
+  <tr>
+    <th>Transaction Date</th>
+    <th>Memo</th>
+    <th>Amount</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let transaction of transactions">
+  <tr>
+    <td>{{transaction.date[1]}}/{{transaction.date[2]}}/{{transaction.date[0]}}</td>
+    <td>{{transaction.memo}}</td>
+    <td>{{amountFormatter.format(transaction.amount)}}</td></tr>
+  </tbody>
+</table>
+
