@@ -1,0 +1,10 @@
+
+.upload-csv-container {
+  display: grid;
+  grid-template-columns: 230px 250px auto;
+  padding: 5px 10px;
+}
+
+.submit-container {
+  padding: 5px 10px;
+}

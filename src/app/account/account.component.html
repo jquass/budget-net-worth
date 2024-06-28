@@ -5,27 +5,32 @@
 <h3>Create New Account</h3>
 
 <form [formGroup]="createAccountForm" (ngSubmit)="createAccount()" ngNativeValidate>
-  <label for="account-name">Account Name: </label>
-  <input id="account-name" type="text"
-         formControlName="accountName" placeholder="Account Name"
-         required minlength="3">
-  <br />
-  <input id="account-submit" type="submit" value="Create Account">
+  <div class="create-account-container">
+    <label for="account-name">Account Name: </label>
+    <input id="account-name" type="text"
+           formControlName="accountName" placeholder="Account Name"
+           required minlength="3">
+  </div>
+
+  <div class="submit-container">
+    <input id="account-submit" type="submit" value="Create Account">
+  </div>
 </form>
 
 <hr/>
 
 <h3>Accounts</h3>
 <table class="table" id="accounts-table">
-  <thead>
-    <tr>
+  <thead >
+    <tr class="accounts-container">
       <th>Name</th>
       <th></th>
     </tr>
   </thead>
   <tbody *ngFor="let account of accounts">
-    <tr id ="account-{{account.id}}" >
+    <tr class="accounts-container" id ="account-{{account.id}}" >
       <td> {{account.accountName}} </td>
+      <td></td>
       <td><button (click)="deleteAccount(account)">Delete</button></td>
     </tr>
   </tbody>

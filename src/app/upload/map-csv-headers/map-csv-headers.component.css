@@ -1,0 +1,9 @@
+.submit-container {
+  padding: 5px 10px;
+}
+
+.select-headers-container {
+  display: grid;
+  grid-template-columns: 250px 230px auto;
+  padding: 5px 10px;
+}

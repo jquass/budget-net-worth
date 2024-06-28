@@ -1,0 +1,51 @@
+<div>
+  <hr/>
+  <h3>Select Headers</h3>
+  <form [formGroup]="mapHeadersCsvForm" (ngSubmit)="mapHeaders(uploadContext?.uploadId)" ngNativeValidate>
+
+    <div class="select-headers-container">
+      <label for="transaction-date-header">Transaction Date Header: </label>
+      <select
+        id="transaction-date-header"
+        name="transaction-date-header"
+        formControlName="transactionDateHeader"
+        required>
+        <option *ngFor="let uploadHeader of uploadContext?.uploadHeaders;" value="{{uploadHeader.id}}">{{uploadHeader.value}}</option>
+      </select>
+    </div>
+
+    <div class="select-headers-container">
+      <label for="memo-header">Memo Header: </label>
+      <select
+        id="memo-header"
+        formControlName="memoHeader"
+        required>
+        <option *ngFor="let uploadHeader of uploadContext?.uploadHeaders;" value="{{uploadHeader.id}}">{{uploadHeader.value}}</option>
+      </select>
+    </div>
+
+    <div class="select-headers-container">
+      <label for="debit-header">Amount/Deposit Header: </label>
+      <select
+        id="debit-header"
+        formControlName="debitHeader"
+        required>
+        <option *ngFor="let uploadHeader of uploadContext?.uploadHeaders;" value="{{uploadHeader.id}}">{{uploadHeader.value}}</option>
+      </select>
+    </div>
+
+    <div class="select-headers-container">
+      <label for="credit-header">Credit/Withdrawal Header <i>(opt.)</i>: </label>
+      <select
+        id="credit-header"
+        formControlName="creditHeader">
+        <option selected></option>
+        <option *ngFor="let uploadHeader of uploadContext?.uploadHeaders;" value="{{uploadHeader.id}}">{{uploadHeader.value}}</option>
+      </select>
+    </div>
+
+    <div class="submit-container">
+      <input type="submit" value="Apply Headers">
+    </div>
+  </form>
+</div>

@@ -34,7 +34,6 @@ export class AccountComponent {
   });
 
   createAccount() : void {
-    console.log(this.createAccountForm.value);
     this.http
       .post<Account>("http://localhost:8080/api/accounts", this.createAccountForm.value)
       .subscribe(account => {
@@ -44,14 +43,15 @@ export class AccountComponent {
   }
 
   deleteAccount(account: Account) : void {
-    this.http
-      .delete<Result>("http://localhost:8080/api/accounts/" + account.id)
-      .subscribe(result => {
-        if (result.ok) {
-          this.accounts = this.accounts.filter(({id}) => id !== account.id);
-        }
-      });
+    if(confirm("Are you sure to delete "+account.accountName+"? This action cannot be undone.")) {
+      this.http
+        .delete<Result>("http://localhost:8080/api/accounts/" + account.id)
+        .subscribe(result => {
+          if (result.ok) {
+            this.accounts = this.accounts.filter(({id}) => id !== account.id);
+          }
+        });
+    }
   }
-
 
 }

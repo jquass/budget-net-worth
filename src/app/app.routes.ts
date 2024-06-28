@@ -6,5 +6,6 @@ import {TransactionComponent} from "./transaction/transaction.component";
 export const routes: Routes = [
   {path: 'accounts', component: AccountComponent},
   {path: 'upload', component: UploadComponent},
-  {path: 'transactions', component: TransactionComponent}
+  {path: 'transactions', component: TransactionComponent},
+  {path: '',   redirectTo: '/accounts', pathMatch: 'full'},
 ];

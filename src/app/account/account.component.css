@@ -1,0 +1,16 @@
+
+.create-account-container {
+  display: grid;
+  grid-template-columns: minmax(150px, 5%) minmax(250px, 15%) auto;
+  padding: 5px 10px;
+}
+
+.submit-container {
+  padding: 5px 10px;
+}
+
+.accounts-container {
+  display: grid;
+  grid-template-columns: 75px 275px auto;
+  padding: 5px 10px;
+}

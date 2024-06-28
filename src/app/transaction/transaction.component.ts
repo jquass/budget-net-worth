@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {Transaction} from "../models/transaction";
 import {NgForOf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
-import {Account} from "../models/account";
 
 @Component({
   selector: 'app-transaction',
