@@ -15,10 +15,10 @@ import {MapCsvHeadersComponent} from "./map-csv-headers/map-csv-headers.componen
     NgIf,
     MapCsvHeadersComponent,
   ],
-  templateUrl: './upload.component.html',
-  styleUrl: './upload.component.css',
+  templateUrl: './import.component.html',
+  styleUrl: './import.component.css',
 })
-export class UploadComponent {
+export class ImportComponent {
   public accounts: Account[] = [];
 
   public file: File | null = null;
@@ -52,6 +52,12 @@ export class UploadComponent {
       .get<Account[]>("http://localhost:8080/api/accounts")
       .subscribe(response => {
         this.accounts = response;
+      });
+    this.http
+      .get<UploadContext>("http://localhost:8080/api/uploads/in-progress/context")
+      .subscribe(response => {
+        this.uploadContext = response;
+        console.log(response);
       });
   }
 

@@ -1,0 +1,41 @@
+
+.upload-csv-container {
+  display: grid;
+  grid-template-columns: 230px 250px auto;
+  padding: 5px 10px;
+}
+
+.submit-container {
+  display: grid;
+  grid-template-columns: 230px auto 90px;
+  padding: 5px 10px;
+}
+
+.shadow {
+  box-shadow: 7px 5px 15px lightslategray;
+  padding: 10px 25px;
+}
+
+
+.review-upload-container {
+  display: grid;
+  grid-template-columns: 100px minmax(400px, auto) auto;
+  padding: 5px 10px;
+}
+
+.transaction-date {
+  text-align: center;
+}
+
+.memo {
+
+}
+
+.amount {
+  text-align: right;
+}
+
+
+h3 {
+  padding-top: 10px;
+}

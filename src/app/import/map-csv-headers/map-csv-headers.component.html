@@ -1,7 +1,6 @@
 <div>
-  <hr/>
-  <h3>Select Headers</h3>
-  <form [formGroup]="mapHeadersCsvForm" (ngSubmit)="mapHeaders(uploadContext?.uploadId)" ngNativeValidate>
+  <h3>Map File Headers</h3>
+  <form class="shadow" [formGroup]="mapHeadersCsvForm" (ngSubmit)="mapHeaders(uploadContext?.uploadId)" ngNativeValidate>
 
     <div class="select-headers-container">
       <label for="transaction-date-header">Transaction Date Header: </label>
@@ -10,7 +9,12 @@
         name="transaction-date-header"
         formControlName="transactionDateHeader"
         required>
-        <option *ngFor="let uploadHeader of uploadContext?.uploadHeaders;" value="{{uploadHeader.id}}">{{uploadHeader.value}}</option>
+        <option
+          *ngFor="let uploadHeader of uploadContext?.uploadHeaders;"
+          [ngValue]="uploadHeader.id"
+        >
+          {{uploadHeader.value}}
+        </option>
       </select>
     </div>
 
@@ -20,7 +24,12 @@
         id="memo-header"
         formControlName="memoHeader"
         required>
-        <option *ngFor="let uploadHeader of uploadContext?.uploadHeaders;" value="{{uploadHeader.id}}">{{uploadHeader.value}}</option>
+        <option
+          *ngFor="let uploadHeader of uploadContext?.uploadHeaders;"
+          [value]="uploadHeader.id"
+        >
+          {{uploadHeader.value}}
+        </option>
       </select>
     </div>
 
@@ -30,7 +39,12 @@
         id="debit-header"
         formControlName="debitHeader"
         required>
-        <option *ngFor="let uploadHeader of uploadContext?.uploadHeaders;" value="{{uploadHeader.id}}">{{uploadHeader.value}}</option>
+        <option
+          *ngFor="let uploadHeader of uploadContext?.uploadHeaders;"
+          [value]="uploadHeader.id"
+        >
+          {{uploadHeader.value}}
+        </option>
       </select>
     </div>
 
@@ -38,7 +52,8 @@
       <label for="credit-header">Credit/Withdrawal Header <i>(opt.)</i>: </label>
       <select
         id="credit-header"
-        formControlName="creditHeader">
+        formControlName="creditHeader"
+      >
         <option selected></option>
         <option *ngFor="let uploadHeader of uploadContext?.uploadHeaders;" value="{{uploadHeader.id}}">{{uploadHeader.value}}</option>
       </select>

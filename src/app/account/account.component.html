@@ -1,10 +1,8 @@
 <h2>Account Management</h2>
 
-<hr/>
-
 <h3>Create New Account</h3>
 
-<form [formGroup]="createAccountForm" (ngSubmit)="createAccount()" ngNativeValidate>
+<form class="shadow" [formGroup]="createAccountForm" (ngSubmit)="createAccount()" ngNativeValidate>
   <div class="create-account-container">
     <label for="account-name">Account Name: </label>
     <input id="account-name" type="text"
@@ -17,10 +15,8 @@
   </div>
 </form>
 
-<hr/>
-
 <h3>Accounts</h3>
-<table class="table" id="accounts-table">
+<table class="table shadow" id="accounts-table">
   <thead >
     <tr class="accounts-container">
       <th>Name</th>

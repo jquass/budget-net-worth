@@ -1,0 +1,69 @@
+
+<h2>Import Transactions</h2>
+
+@if(!uploadContext) {
+<h3>Upload CSV File</h3>
+<form class="shadow" [formGroup]="uploadCsvForm" (ngSubmit)="uploadCsv()" ngNativeValidate>
+
+  <div class="upload-csv-container">
+    <label for="csv-file">CSV file: </label>
+    <input
+      formControlName="csvFile"
+      accept="text/csv"
+      id="csv-file"
+      name="transactions-file"
+      type="file"
+      required/>
+  </div>
+
+  <div class="upload-csv-container">
+    <label for="file-account">Account: </label>
+    <select
+      id="file-account"
+      name="file-account"
+      formControlName="accountId"
+      required>
+      <option *ngFor="let account of accounts;" value="{{account.id}}">{{account.accountName}}</option>
+    </select>
+  </div>
+
+  <div class="submit-container">
+    <input id="account-submit" type="submit" value="Upload CSV">
+  </div>
+</form>
+}
+
+@if(uploadContext && uploadContext.uploadHeaders.length > 0) {
+  <app-map-csv-headers [uploadContext]="uploadContext" (uploadContextEvent)="handleUploadContextEvent($event)" />
+}
+
+@if(uploadContext && uploadContext.mappedUploadRows.length > 0) {
+  <h3>Review Upload</h3>
+  <div class="shadow">
+    <form [formGroup]="finalizeUploadForm" (ngSubmit)="finalizeUpload()">
+      <div class="submit-container">
+        <div></div>
+        <div></div>
+        <input type="submit" value="Upload CSV">
+      </div>
+    </form>
+    <table class="table" id="review-upload-table">
+      <thead>
+      <tr class="review-upload-container">
+        <th>Date</th>
+        <th>Memo</th>
+        <th>Amount</th>
+      </tr>
+      </thead>
+        @for(mappedUploadRow of uploadContext.mappedUploadRows; track mappedUploadRow) {
+          <tr class="review-upload-container">
+            <td class="transaction-date">{{mappedUploadRow.date[1]}}/{{mappedUploadRow.date[2]}}/{{mappedUploadRow.date[0]}}</td>
+            <td class="memo">{{mappedUploadRow.memo}}</td>
+            <td class="amount">{{formatter.format(mappedUploadRow.debit)}}</td>
+          </tr>
+        }
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+}

@@ -1,0 +1,31 @@
+.transactions-container {
+  display: grid;
+  grid-template-columns: 120px 120px 525px minmax(150px, auto) 20px;
+  padding: 5px 10px;
+  margin-top: 5px;
+}
+
+hr {
+  margin: 0 20px;
+}
+
+
+.shadow {
+  box-shadow: 7px 5px 15px lightslategray;
+}
+
+.transaction-date {
+  text-align: center;
+}
+
+.memo {
+
+}
+
+.amount {
+  text-align: right;
+}
+
+.account {
+  text-align: right;
+}

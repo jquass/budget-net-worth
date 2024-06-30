@@ -1,18 +1,21 @@
 <h3>Transactions</h3>
 
-<table class="table" id="transactions-table">
+<table class="table shadow" id="transactions-table">
   <thead>
-  <tr>
-    <th>Transaction Date</th>
-    <th>Memo</th>
-    <th>Amount</th>
+  <tr class="transactions-container">
+    <th class="account">Account</th>
+    <th class="transaction-date">Date</th>
+    <th class="memo">Memo</th>
+    <th class="amount">Amount</th>
   </tr>
   </thead>
   <tbody *ngFor="let transaction of transactions">
-  <tr>
-    <td>{{transaction.date[1]}}/{{transaction.date[2]}}/{{transaction.date[0]}}</td>
-    <td>{{transaction.memo}}</td>
-    <td>{{amountFormatter.format(transaction.amount)}}</td></tr>
+  <hr/>
+  <tr class="transactions-container">
+    <td class="account">{{accountsDictionary.get(transaction.accountId)?.accountName}}</td>
+    <td class="transaction-date">{{transaction.date[1]}}/{{transaction.date[2]}}/{{transaction.date[0]}}</td>
+    <td class="memo">{{transaction.memo}}</td>
+    <td class="amount">{{amountFormatter.format(transaction.amount)}}</td>
+  </tr>
   </tbody>
 </table>
-

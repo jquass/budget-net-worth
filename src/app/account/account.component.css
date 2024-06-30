@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: minmax(150px, 5%) minmax(250px, 15%) auto;
   padding: 5px 10px;
+  margin: 10px 5px;
 }
 
 .submit-container {
@@ -11,6 +12,15 @@
 
 .accounts-container {
   display: grid;
-  grid-template-columns: 75px 275px auto;
+  grid-template-columns: 175px 200px auto;
   padding: 5px 10px;
+}
+
+.shadow {
+  box-shadow: 7px 5px 15px lightslategray;
+  padding: 10px 25px;
+}
+
+h3 {
+  padding-top: 15px;
 }
