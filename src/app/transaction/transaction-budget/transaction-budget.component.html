@@ -1,0 +1,12 @@
+<td class="budget" [formGroup]="transactionBudgetForm">
+  <select
+    #transactionBudget
+    name="transaction-budget"
+    formControlName="transactionBudget{{transaction!.id}}"
+    (change)="updateBudget(transactionBudget.value, transaction!.id)">
+
+    <option value=""></option>
+    <option *ngFor="let budget of budgets;" value="{{budget.id}}">{{budget.budgetName}}</option>
+
+  </select>
+</td>

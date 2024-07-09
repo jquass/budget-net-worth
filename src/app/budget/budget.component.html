@@ -1,0 +1,135 @@
+<h2>Budget Management</h2>
+
+<h3>Create New Budget</h3>
+
+<form class="shadow" [formGroup]="createBudgetForm" (ngSubmit)="createBudget()" ngNativeValidate>
+
+  <div class="create-budget-container">
+    <label for="budget-name">Budget Name: </label>
+    <input
+      id="budget-name"
+      type="text"
+      placeholder="Enter Budget Name"
+      formControlName="budgetName"
+      minlength="4"
+      required
+      >
+    <div *ngIf="budgetName.invalid && (budgetName.dirty || budgetName.touched)" class="alert">
+      <div *ngIf="budgetName.hasError('required')">
+        Name is required.
+      </div>
+      <div *ngIf="budgetName.hasError('minlength')">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+
+  <div class="create-budget-container">
+  <label for="amount">Amount ($): </label>
+  <input
+    id="amount"
+    type="number"
+    placeholder="Enter Amount"
+    formControlName="amount"
+    min="1.0"
+    required
+    >
+    <div *ngIf="amount.invalid && (amount.dirty || amount.touched)" class="alert">
+      <div *ngIf="amount.hasError('required')">
+        Amount is required.
+      </div>
+      <div *ngIf="amount.hasError('min')">
+        Amount must be at least $1.
+      </div>
+    </div>
+  </div>
+
+  <div class="create-budget-container">
+    <label for="month-period">Monthly Period: </label>
+    <input
+      id="month-period"
+      type="number"
+      placeholder="Enter Monthly Period"
+      min="1"
+      required
+      formControlName="monthPeriod"
+    >
+  </div>
+
+  <div class="create-budget-container">
+    <label for="start-month">Start Month: </label>
+
+
+    <select id="start-month" formControlName="startMonth" required>
+      <option *ngFor="let month of months" [ngValue]="month">{{this.titleCasePipe.transform(month)}}</option>
+    </select>
+
+  </div>
+  <div class="create-budget-container">
+    <label for="start-year">Start Year: </label>
+    <input
+      id="start-year"
+      type="number"
+      placeholder="Start Year"
+      required
+      formControlName="startYear"
+    >
+  </div>
+
+
+  <div class="create-budget-container">
+    <label for="stop-month">Stop Month <i>(opt.)</i>: </label>
+    <select id="stop-month" formControlName="stopMonth">
+      <option [ngValue]="null" disabled>Optional: Stop Month</option>
+      <option *ngFor="let month of months" [ngValue]="month">{{this.titleCasePipe.transform(month)}}</option>
+    </select>
+  </div>
+  <div class="create-budget-container">
+    <label for="stop-year">Stop Year <i>(opt.)</i>: </label>
+    <input
+      id="stop-year"
+      type="number"
+      placeholder="Optional: Stop Year"
+      formControlName="stopYear"
+    >
+  </div>
+
+  <div class="create-budget-container">
+    <label for="stop-amount">Stop Amount ($, <i>opt.</i>): </label>
+    <input
+      id="stop-amount"
+      type="number"
+      placeholder="Optional: Stop Amount"
+      min="0"
+      formControlName="stopAmount"
+    >
+  </div>
+
+  <div class="submit-container">
+    <input type="submit" value="Create Budget">
+  </div>
+</form>
+
+<h3>Budgets</h3>
+<table class="table shadow" id="budgets-table">
+  <thead >
+  <tr class="budgets-container">
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Period</th>
+    <th>Start Month</th>
+    <th>Stop Month</th>
+    <th>Stop Amount</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let budget of budgets">
+  <tr class="budgets-container" id ="budget-{{budget.id}}" >
+    <td> {{budget.budgetName}} </td>
+    <td>{{formatter.format(budget.amount)}}</td>
+    <td>{{budget.monthPeriod}}</td>
+    <td>{{titleCasePipe.transform(budget.startMonth)}} {{budget.startYear}}</td>
+    <td>{{titleCasePipe.transform(budget.stopMonth)}} {{budget.stopYear}}</td>
+    <td>{{formatter.format(budget.stopAmount)}}</td>
+  </tr>
+  </tbody>
+</table>
