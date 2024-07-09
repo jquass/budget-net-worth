@@ -1,0 +1,18 @@
+.shadow {
+  box-shadow: 7px 5px 15px lightslategray;
+  padding: 10px 25px;
+}
+
+.create-budget-container {
+  display: grid;
+  grid-template-columns: 200px 200px 300px auto;
+  padding: 5px 10px;
+}
+
+.submit-container {
+  padding: 5px 10px;
+}
+
+.alert {
+  padding: 0 20px;
+}

@@ -23,7 +23,7 @@
       name="file-account"
       formControlName="accountId"
       required>
-      <option *ngFor="let account of accounts;" value="{{account.id}}">{{account.accountName}}</option>
+      <option *ngFor="let account of accounts;" [ngValue]="account.id">{{account.accountName}}</option>
     </select>
   </div>
 

@@ -7,6 +7,7 @@
     <th class="transaction-date">Date</th>
     <th class="memo">Memo</th>
     <th class="amount">Amount</th>
+    <th class="budget">Budget</th>
   </tr>
   </thead>
   <tbody *ngFor="let transaction of transactions">
@@ -16,6 +17,7 @@
     <td class="transaction-date">{{transaction.date[1]}}/{{transaction.date[2]}}/{{transaction.date[0]}}</td>
     <td class="memo">{{transaction.memo}}</td>
     <td class="amount">{{amountFormatter.format(transaction.amount)}}</td>
+    <app-transaction-budget [transaction]="transaction" [budgets]="budgets"></app-transaction-budget>
   </tr>
   </tbody>
 </table>

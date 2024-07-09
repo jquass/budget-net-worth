@@ -6,4 +6,5 @@ export interface Transaction {
   accountId: number;
   uploadId: number;
   uploadRowId: number;
+  budgetId: number;
 }
