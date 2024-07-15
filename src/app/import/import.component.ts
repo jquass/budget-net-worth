@@ -57,7 +57,6 @@ export class ImportComponent {
       .get<UploadContext>("http://localhost:8080/api/uploads/in-progress/context")
       .subscribe(response => {
         this.uploadContext = response;
-        console.log(response);
       });
   }
 
