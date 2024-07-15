@@ -8,10 +8,9 @@ import {Transaction} from "../../models/transaction";
 })
 export class TransactionBudgetService {
   toFormGroup(transaction: Transaction, budgets: Budget[]) {
-    console.log(JSON.stringify(transaction));
     const group: any = {};
     budgets.forEach(budget => {
-      group['transactionBudget' + transaction.id] = new FormControl(transaction.budgetId ? transaction.budgetId : null);
+      group['transactionBudget' + transaction.id] = new FormControl(transaction.budgetId);
     })
     return new FormGroup(group);
   }
